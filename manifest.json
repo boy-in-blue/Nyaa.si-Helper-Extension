@@ -1,0 +1,35 @@
+{
+    "name": "Nyaa.si Torrent Copy",
+    "description": "Copy all torrent links in nyaa.si search page. Icon: http://bizmasterstudios.deviantart.com/",
+    "version": "1.0",
+    "manifest_version": 2,
+    "icons": {
+        "16": "./16.png",
+        "32": "./32.png",
+        "48": "./48.png",
+        "128": "./128.png"
+    },
+    "background": {
+        "scripts": [
+            "./background.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://nyaa.si/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "options_page": "./options.html",
+    "permissions": [
+        "tabs",
+        "https://nyaa.si/*"
+    ]
+}
