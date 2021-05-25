@@ -22,6 +22,15 @@ const cop = () => {
         (err) => console.error('Error:', err));
 }
 
+const selectall = () => {
+    let t = get_table();
+    let rows = [...t.rows];
+    rows.shift();
+    rows.forEach((c) => {
+        c.querySelector("input").checked = true;
+    })
+}
+
 const first = document.createElement('li');
 first.innerHTML = `<a href="#">Copy Selected 🧲</a>`;
 first.id = "36first";
@@ -30,12 +39,20 @@ document.getElementById('36first').addEventListener('click', cop);
 
 let t = get_table();
 let rows = [...t.rows];
-rows.shift();
+let head = rows.shift();
 
 rows.forEach(row => {
     let cell = row.insertCell(-1);
+    cell.setAttribute("class", "text-center");
     let check = document.createElement("INPUT");
     check.setAttribute("type", "checkbox");
     cell.appendChild(check);
 });
+
+let th = document.createElement("th");
+th.setAttribute("class", "text-center");
+th.style.width = "50px";
+th.innerHTML = `<a href="#" id="36all" title="All"></a>✅`;
+head.appendChild(th);
+th.addEventListener('click', selectall);
 
